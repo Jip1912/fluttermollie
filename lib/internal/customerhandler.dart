@@ -21,7 +21,7 @@ class CustomerHandler {
 
     dynamic body = json.encode(data);
 
-    var res = await http.post(_apiEndpoint, headers: _headers, body: body);
+    var res = await http.post(Uri.parse(_apiEndpoint), headers: _headers, body: body);
 
     return MollieCustomer.build(json.decode(res.body));
   }
@@ -29,7 +29,7 @@ class CustomerHandler {
   /// Retrieve a single customer by its ID.
   Future<MollieCustomer> get(String customerId) async {
     var res = await http.get(
-      _apiEndpoint + "/" + customerId,
+      Uri.parse(_apiEndpoint + "/" + customerId),
       headers: _headers,
     );
 
@@ -43,7 +43,7 @@ class CustomerHandler {
 
     dynamic body = json.encode(data);
 
-    var res = await http.patch(_apiEndpoint + "/" + customerId,
+    var res = await http.patch(Uri.parse(_apiEndpoint + "/" + customerId),
         headers: _headers, body: body);
 
     return MollieCustomer.build(json.decode(res.body));
@@ -52,7 +52,7 @@ class CustomerHandler {
   /// Delete a customer. All mandates and subscriptions created for this customer will be canceled as well.
   Future<String> delete(String customerId) async {
     await http.delete(
-      _apiEndpoint + "/" + customerId,
+      Uri.parse(_apiEndpoint + "/" + customerId),
       headers: _headers,
     );
 
@@ -64,7 +64,7 @@ class CustomerHandler {
     List<MollieCustomer> customers = new List();
 
     var res = await http.get(
-      _apiEndpoint,
+      Uri.parse(_apiEndpoint),
       headers: _headers,
     );
 
