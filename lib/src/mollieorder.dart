@@ -7,7 +7,7 @@ class MollieOrderRequest {
   MollieAmount amount;
   // MollieAddress shippingAddress;
   // MollieAddress billingAddress;
-  dynamic metaData;
+  dynamic metadata;
   // String consumerDateOfBirth;
   String locale;
   String redirectUrl;
@@ -21,7 +21,7 @@ class MollieOrderRequest {
       {this.amount,
       // this.billingAddress,
       // this.shippingAddress,
-      this.metaData,
+      this.metadata,
       // this.consumerDateOfBirth,
       this.locale,
       this.webhookUrl,
@@ -46,7 +46,7 @@ class MollieOrderRequest {
       "amount": amount.toMap(),
       // "billingAddress": billingAddress.toMap(),
       // "shippingAddress": shippingAddress.toMap(),
-      "metaData": metaData,
+      "metadata": metadata,
       // "consumerDateOfBirth": consumerDateOfBirth,
       "locale": locale,
       "redirectUrl": redirectUrl,
@@ -64,7 +64,7 @@ class MollieOrderResponse {
   MollieAmount amount;
   // MollieAddress shippingAddress;
   // MollieAddress billingAddress;
-  dynamic metaData;
+  dynamic metadata;
   // String consumerDateOfBirth;
   String locale;
   String redirectUrl;
@@ -92,7 +92,7 @@ class MollieOrderResponse {
 
     mode = data["mode"];
 
-    metaData = data["metaData"];
+    metadata = data["metadata"];
 
     // consumerDateOfBirth = data["consumerDateOfBirth"];
     locale = data["locale"];
