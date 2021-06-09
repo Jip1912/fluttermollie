@@ -18,6 +18,7 @@ import 'package:mollie/src/mollieclient.dart';
 import 'package:mollie/src/mollieorder.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:mollie/src/molliepayment.dart';
 
 MollieClient client = new MollieClient();
 
@@ -43,4 +44,11 @@ class Mollie {
 
   static MollieOrderResponse setCurrentOrder(MollieOrderResponse order) =>
       _currentOrder = order;
+
+  static MolliePaymentResponse _currentPayment;
+
+  static MolliePaymentResponse getCurrentPayment() => _currentPayment;
+
+  static MolliePaymentResponse setCurrentPayment(MolliePaymentResponse payment) =>
+      _currentPayment = payment;
 }
