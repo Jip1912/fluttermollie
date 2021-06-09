@@ -6,6 +6,7 @@ class MolliePaymentRequest {
   String description;
   String webhookUrl;
   String redirectUrl;
+  String method;
   dynamic metadata;
 
   MolliePaymentRequest(
@@ -13,6 +14,7 @@ class MolliePaymentRequest {
       this.redirectUrl,
       this.description,
       this.webhookUrl,
+      this.method,
       this.metadata});
 
   String toJson() {
@@ -21,6 +23,7 @@ class MolliePaymentRequest {
       "redirectUrl": redirectUrl,
       "metadata": json.encode(metadata),
       "description": description,
+      "method": method,
       "webhookUrl": webhookUrl,
     });
   }

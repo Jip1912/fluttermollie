@@ -18,11 +18,11 @@ class MollieCheckout extends StatefulWidget {
   final bool useIdeal;
   final bool useApplePay;
   final CheckoutStyle style;
-  final MollieOrderRequest order;
-  final Function(MollieOrderRequest) onMethodSelected;
+  final MolliePaymentRequest payment;
+  final Function(MolliePaymentRequest) onMethodSelected;
 
   MollieCheckout(
-      {@required this.order,
+      {@required this.payment,
       this.style,
       this.onMethodSelected,
       this.useCredit = true,
@@ -41,7 +41,7 @@ class _MollieCheckoutState extends State<MollieCheckout> {
   CheckoutStyle style;
 
   void _setMethod(String method) {
-    widget.order.method = method;
+    widget.payment.method = method;
     widget.onMethodSelected(widget.order);
   }
 
