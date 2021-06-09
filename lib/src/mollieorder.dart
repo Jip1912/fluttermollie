@@ -15,7 +15,7 @@ class MollieOrderRequest {
   String description;
   // List<MollieProductRequest> products;
   String method;
-  // String orderNumber;
+  String orderNumber;
 
   MollieOrderRequest(
       {this.amount,
@@ -29,7 +29,7 @@ class MollieOrderRequest {
       this.description,
       // this.products,
       this.method,
-      //this.orderNumber
+      this.orderNumber
       });
 
   dynamic toJson() {
@@ -51,8 +51,8 @@ class MollieOrderRequest {
       "locale": locale,
       "redirectUrl": redirectUrl,
       "webhookUrl": webhookUrl,
-      "description": description
-      // "orderNumber": orderNumber,
+      "description": description,
+      "orderNumber": orderNumber
       // "method": method,
       // "lines": productMaps
     });
