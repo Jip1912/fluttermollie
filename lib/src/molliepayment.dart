@@ -6,20 +6,20 @@ class MolliePaymentRequest {
   String description;
   String webhookUrl;
   String redirectUrl;
-  dynamic metaData;
+  dynamic metadata;
 
   MolliePaymentRequest(
       {this.amount,
       this.redirectUrl,
       this.description,
       this.webhookUrl,
-      this.metaData});
+      this.metadata});
 
   String toJson() {
     return json.encode({
       "amount": amount.toMap(),
       "redirectUrl": redirectUrl,
-      "metadata": json.encode(metaData),
+      "metadata": json.encode(metadata),
       "description": description,
       "webhookUrl": webhookUrl,
     });
@@ -38,7 +38,7 @@ class MolliePaymentResponse {
   String profileId;
   String description;
   String method;
-  dynamic metaData;
+  dynamic metadata;
   String webhookUrl;
   String customerUrl;
   String redirectUrl;
@@ -56,7 +56,7 @@ class MolliePaymentResponse {
         value: data["amount"]["value"], currency: data["amount"]["currency"]);
     details = data["details"];
     sequenceType = data["sequenceType"];
-    metaData = data["metaData"];
+    metadata = data["metadata"];
     description = data["description"];
     redirectUrl = data["redirectUrl"];
     method = data["method"];

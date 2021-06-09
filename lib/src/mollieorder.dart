@@ -5,56 +5,56 @@ import 'dart:convert';
 
 class MollieOrderRequest {
   MollieAmount amount;
-  // MollieAddress shippingAddress;
-  // MollieAddress billingAddress;
+  MollieAddress shippingAddress;
+  MollieAddress billingAddress;
   dynamic metadata;
-  // String consumerDateOfBirth;
+  String consumerDateOfBirth;
   String locale;
   String redirectUrl;
   String webhookUrl;
   String description;
-  // List<MollieProductRequest> products;
+  List<MollieProductRequest> products;
   String method;
-  // String orderNumber;
+  String orderNumber;
 
   MollieOrderRequest(
       {this.amount,
-      // this.billingAddress,
-      // this.shippingAddress,
+      this.billingAddress,
+      this.shippingAddress,
       this.metadata,
-      // this.consumerDateOfBirth,
+      this.consumerDateOfBirth,
       this.locale,
       this.webhookUrl,
       this.redirectUrl,
       this.description,
-      // this.products,
+      this.products,
       this.method,
-      //this.orderNumber
+      this.orderNumber
       });
 
   dynamic toJson() {
-    // List<dynamic> productMaps = [];
+    List<dynamic> productMaps = [];
 
-    // if(products != null) {
-    //   for (MollieProductRequest p in products) {
-    //     print(p.toMap());
-    //     productMaps.add(p.toMap());
-    //   }
-    // }
+    if(products != null) {
+      for (MollieProductRequest p in products) {
+         print(p.toMap());
+        productMaps.add(p.toMap());
+       }
+    }
 
     return json.encode({
       "amount": amount.toMap(),
-      // "billingAddress": billingAddress.toMap(),
-      // "shippingAddress": shippingAddress.toMap(),
+      "billingAddress": billingAddress.toMap(),
+      "shippingAddress": shippingAddress.toMap(),
       "metadata": metadata,
-      // "consumerDateOfBirth": consumerDateOfBirth,
+      "consumerDateOfBirth": consumerDateOfBirth,
       "locale": locale,
       "redirectUrl": redirectUrl,
       "webhookUrl": webhookUrl,
-      "description": description
-      // "orderNumber": orderNumber,
-      // "method": method,
-      // "lines": productMaps
+      "description": description,
+      "orderNumber": orderNumber,
+      "method": method,
+      "lines": productMaps
     });
   }
 }
@@ -62,10 +62,10 @@ class MollieOrderRequest {
 class MollieOrderResponse {
   String id;
   MollieAmount amount;
-  // MollieAddress shippingAddress;
-  // MollieAddress billingAddress;
+  MollieAddress shippingAddress;
+  MollieAddress billingAddress;
   dynamic metadata;
-  // String consumerDateOfBirth;
+  String consumerDateOfBirth;
   String locale;
   String redirectUrl;
   String webhookUrl;
@@ -84,8 +84,8 @@ class MollieOrderResponse {
     amount = MollieAmount(
         currency: data["amount"]["currency"], value: data["amount"]["value"]);
 
-    // shippingAddress = MollieAddress.build(data["shippingAddress"]);
-    // billingAddress = MollieAddress.build(data["billingAddress"]);
+    shippingAddress = MollieAddress.build(data["shippingAddress"]);
+    billingAddress = MollieAddress.build(data["billingAddress"]);
 
     createdAt = data["createdAt"];
     expiresAt = data["expiredAt"];
@@ -94,15 +94,15 @@ class MollieOrderResponse {
 
     metadata = data["metadata"];
 
-    // consumerDateOfBirth = data["consumerDateOfBirth"];
+    consumerDateOfBirth = data["consumerDateOfBirth"];
     locale = data["locale"];
 
     redirectUrl = data["redirectUrl"];
     webhookUrl = data["webhookUrl"];
 
-    // for (int i = 0; i < data["lines"].length; i++) {
-    //   products.add(new MollieProductResponse.build(data["lines"][i]));
-    // }
+    for (int i = 0; i < data["lines"].length; i++) {
+      products.add(new MollieProductResponse.build(data["lines"][i]));
+    }
 
     status = data["status"];
     method = data["method"];
