@@ -20,8 +20,6 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:mollie/src/molliepayment.dart';
 
-MollieClient client = new MollieClient();
-
 class Mollie {
   final klarnaPayNow = "sofort";
   final creditCard = "creditcard";
@@ -29,6 +27,8 @@ class Mollie {
   final sepa = "branktransfer";
   final applePay = "applePay";
   final ideal = "ideal";
+
+  static MollieClient client = new MollieClient();
 
   static const MethodChannel _channel = const MethodChannel('mollie');
 
