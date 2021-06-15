@@ -18,6 +18,8 @@ class MollieClient {
 
   factory MollieClient() => _instance;
 
+  static MollieClient getInstance() => _instance;
+
   MollieClient._internal();
 
   /// Sets the api key
