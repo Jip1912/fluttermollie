@@ -14,7 +14,7 @@ class MollieClient {
   PaymentHandler payments;
   InvoiceHandler invoiceHandler;
 
-  static final MollieClient _instance = MollieClient._internal();
+  static MollieClient _instance = MollieClient._internal();
 
   factory MollieClient() => _instance;
 
