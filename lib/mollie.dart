@@ -51,4 +51,11 @@ class Mollie {
 
   static MolliePaymentResponse setCurrentPayment(MolliePaymentResponse payment) =>
       _currentPayment = payment;
+
+  static String _currentPaymentId;
+
+  static String getCurrentPaymentId() => _currentPaymentId;
+
+  static String setCurrentPaymentId(String paymentId) =>
+      _currentPaymentId = paymentId;
 }
